@@ -1,5 +1,10 @@
 img {
     width: 100px;
     height:100px;
-    background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;
    }
+
+.next{
+    float: right;
+    margin-right: 10%;
+
+}
