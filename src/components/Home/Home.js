@@ -23,13 +23,13 @@ class Home extends Component {
       method: 'GET',
       url: '/api/pizza'
     }).then((response) => {
-      const pizzas = response.data; // Array of pizza selections
-      const action = { type: 'ADD_ORDER', payload: pizzas };
+      const storedPizzas = response.data; // Array of pizza selections
+      const action = { type: 'ADD_ORDER', payload: storedPizzas };
       this.props.dispatch(action);
-      console.log(pizzas);
+      console.log(storedPizzas);
     })
   }
-  // Reducer to track order add or remove 
+  
 
   render() {
     return (
@@ -38,6 +38,7 @@ class Home extends Component {
 
         <div className = "card">
         <img src = "images/pizza_photo.png" alt="pizza"/>
+        {this.props.reduxState.pizzas}
         <br /> <button>Add</button>
         <button>Remove</button>
         </div>
