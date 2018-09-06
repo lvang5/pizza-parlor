@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import CheckoutItem from './CheckoutItem/CheckoutItem.js';
 import { connect } from 'react-redux';
-
-const orderPh = [1, 2, 3];
+import axios from 'axios';
 
 class Checkout extends Component {
     constructor(props) {
@@ -33,7 +32,21 @@ class Checkout extends Component {
         }
     }
     handleButtonClick = () => {
-        
+        this.sendOrderToMonGod();
+    }
+
+    sendOrderToMonGod = () => {
+        axios({
+            method: 'POST',
+            url: '/api/order',
+            data: this.state.order
+        }).then((response) =>{
+            console.log(`This was ${response.data}, Congratulations, just like God on the seventh day, you may rest`);
+            alert(`This was ${response.data}, Congratulations, just like God on the seventh day, you may rest whilst eating pizza`);
+        }).catch((error)=>{
+            console.log('Something terrible has happened; Mongod has perished. Please seek help and shelter for the end of the world', error);
+            alert('An error has occurred. Please re-order your pizza')
+        })
     }
 
 
@@ -58,7 +71,7 @@ render() {
                 </thead>
                 <tbody>
                     {/* map over array of pizzas in customer's cart */}
-                    {orderPh.map((item, index) => {
+                    {this.state.order.pizzas.map((item, index) => {
                         return (
                             <CheckoutItem key={index} item={item} />
                         )
@@ -66,7 +79,7 @@ render() {
                 </tbody>
             </table>
             <h1>Total:</h1>
-            <button>Checkout</button>
+            <button onClick={this.handleButtonClick}>Checkout</button>
         </div>
     )
 }
