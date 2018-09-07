@@ -7,7 +7,17 @@ import {createStore , combineReducers , applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-// HomeReducer
+// HomeReducer: track order add and remove
+const pizzas = (state = [], action) => {
+    if(action.type === 'ADD_ORDER') {
+        return [...state, action.payload];
+    } else if (action.type === 'DELETE_ONE') {
+        return state.filter((pizza, i) => pizza.idNumber !== action.payload);
+    } else {
+        return state;
+    }
+}
+
 
 //CustomerReducer
 
@@ -18,12 +28,11 @@ import logger from 'redux-logger';
 
 
 
-
-
-
 const storeInstance = createStore(
     combineReducers({
 // reducers goes here
+        pizzas,
+        
     }),
     applyMiddleware(logger),
 );
