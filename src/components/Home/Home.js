@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { connect } from 'react-redux';
 import './Home.css';
+import PizzaCard from './PizzaCard/PizzaCard.js';
 
 class Home extends Component {
 
@@ -17,7 +18,7 @@ class Home extends Component {
   }
 
   // axios GET all of the pizzas available for selection -- map over pizzas
-  getPizzas() {
+  getPizzas = () =>{
     console.log('in getPizzas')
     axios({
       method: 'GET',
@@ -32,6 +33,9 @@ class Home extends Component {
     })
   }
 
+  handleClick = () =>{
+    console.log('Hello');
+  }
 
   render() {
     return (
@@ -39,12 +43,11 @@ class Home extends Component {
         <div>
           <h3>Step 1: Select Your Pizza</h3>
           {this.state.storedPizzas.map((pizza, i) => {
-            return <img src="images/pizza_photo.png" alt="pizza" />
+            return <PizzaCard key={i} pizza={pizza}/>
           })}
-          <br /> <button>Add</button>
-          <button>Remove</button>
+          <br /> 
         </div>
-        <button className="next">Next</button>
+        <button className="next" onClick={this.handleClick}>Next</button>
       </div>
 
     )
