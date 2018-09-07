@@ -1,0 +1,11 @@
+.nextButton {
+float: right;
+font-size: 1.5em;
+margin-right: 10%;
+color: gray;
+font-style: bold;
+background-color: darkblue;
+width: 200px;
+height: 80px;
+border: 2px solid gray;
+}
