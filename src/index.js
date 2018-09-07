@@ -31,6 +31,7 @@ const pizzas = (state = [], action) => {
 const storeInstance = createStore(
     combineReducers({
 // reducers goes here
+        pizzas,
         
     }),
     applyMiddleware(logger),
