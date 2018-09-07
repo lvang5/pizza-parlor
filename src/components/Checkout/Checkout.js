@@ -9,13 +9,13 @@ class Checkout extends Component {
         this.state = {
             order: {
                 customer: {
-                    name: "Chris",
-                    street_address: "123 street",
-                    city: "Minneapolis",
-                    zip: 55408
+                    name: this.props.reduxState.currentOrder.customer.name,
+                    street_address: this.props.reduxState.currentOrder.street_address,
+                    city: this.props.reduxState.currentOrder.city,
+                    zip: this.props.reduxState.currentOrder.zip
                 },
                 pizzas: [{
-                    _id: "5afc94b8c62836fadd80496c", 
+                    _id: this.props.reduxState.currentOrder.pizzas._id, 
                     name: "Pepperoni",
                     description: "Classic pizza with cheese and pepperoni. Baked with a traditional crust in our brick oven.",
                     cost: "14.99"
