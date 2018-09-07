@@ -4,8 +4,8 @@ class CheckoutItem extends Component {
   render() {
     return (
       <tr>
-          <td>Some name</td>
-          <td>Some cost</td>
+        <td>{this.props.item.name}</td>
+        <td>{this.props.item.cost}</td>
       </tr>
     )
   }

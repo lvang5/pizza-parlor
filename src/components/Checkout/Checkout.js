@@ -55,14 +55,14 @@ render() {
         <div>
             <h2>Step 3: Checkout</h2>
             <div>
-                <ul>
-                    <li>Name ph</li>
-                    <li>Street ph</li>
-                    <li>City zip ph</li>
+                <ul style={{listStylePosition: 'inside', listStyleType: 'none'}}>
+                    <li>{this.state.order.customer.name}</li>
+                    <li>{this.state.order.customer.street_address}</li>
+                    <li>{this.state.order.customer.city} {this.state.order.customer.zip}</li>
                 </ul>
-                <h3>Type placeholder</h3>
+                <h3>{this.state.order.type}</h3>
             </div>
-            <table>
+            <table style={{width: '100%'}}>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -78,7 +78,7 @@ render() {
                     })}
                 </tbody>
             </table>
-            <h1>Total:</h1>
+            <h1>Total: ${this.state.order.order_total}</h1>
             <button onClick={this.handleButtonClick}>Checkout</button>
         </div>
     )
