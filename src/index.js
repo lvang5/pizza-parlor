@@ -8,17 +8,29 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 
+
 const currentOrder = (state = [], action) => {
     if (action.type === 'ADD_ITEM') {
         return [...state, action.payload];
     }
     return state;
 }
-
+const pizzas = (state = [], action) => {
+    if(action.type === 'ADD_ORDER') {
+        return [...state, action.payload];
+    } else if (action.type === 'DELETE_ONE') {
+        return state.filter((pizza, i) => pizza.idNumber !== action.payload);
+    } else {
+        return state;
+    }
+}
 
 const storeInstance = createStore(
     combineReducers({
-        currentOrder
+        currentOrder,
+        pizzas,
+        
+
     }),
     applyMiddleware(logger),
 );
