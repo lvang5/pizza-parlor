@@ -8,12 +8,10 @@ class Customer extends Component {
     super();
 
     this.state = {
-      customer: {
-        name: '',
-        street_address: '',
-        city: '',
-        zip: '',
-      },
+      name: '',
+      street_address: '',
+      city: '',
+      zip: '',
       type: '',
     }
 
@@ -24,9 +22,12 @@ class Customer extends Component {
   //STORES INFORMATION
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   }
+
+  
+
 
 
   //RADIO BUTTON FUNCTION
@@ -78,7 +79,7 @@ class Customer extends Component {
         <br/>
 
 
-          <input alignclassName="titleForm" type="text" onChange={this.handleChange} name="name" placeholder="Name" />
+          <input className="titleForm" type="text" onChange={this.handleChange} name="name" placeholder="Name" />
           <br />
           <input className="titleForm" type="text" onChange={this.handleChange} name="street_address" placeholder="Street Address" />
           <br />

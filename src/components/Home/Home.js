@@ -49,8 +49,6 @@ class Home extends Component {
       this.setState({
         storedPizzas: response.data
       }); // Array of pizza selections
-      const action = { type: 'ADD_ORDER', payload: this.state.storedPizzas };
-      this.props.dispatch(action);
       console.log(this.state.storedPizzas);
     })
   }

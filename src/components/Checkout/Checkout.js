@@ -9,28 +9,18 @@ class Checkout extends Component {
         this.state = {
             order: {
                 customer: {
-                    name: this.props.reduxState.currentOrder.customer.name,
+                    name: this.props.reduxState.currentOrder.name,
                     street_address: this.props.reduxState.currentOrder.street_address,
                     city: this.props.reduxState.currentOrder.city,
-                    zip: this.props.reduxState.currentOrder.zip
+                    zip: this.props.reduxState.currentOrder.zip,
                 },
-                pizzas: [{
-                    _id: this.props.reduxState.currentOrder.pizzas._id, 
-                    name: "Pepperoni",
-                    description: "Classic pizza with cheese and pepperoni. Baked with a traditional crust in our brick oven.",
-                    cost: "14.99"
-                    },
-                    {
-                    _id: "5afc94f3c62836fadd804979",
-                    name: "Splat of Marinara",
-                    description: "Cheeseless pizza with marinara, garlic and red peppers.",
-                    cost: "12.99"
-                    }],
-                order_total: 27.98,
-                type: "Pickup"
+                pizzas: this.props.reduxState.pizzas,
+                order_total: 2,
+                type: this.props.reduxState.currentOrder.type
             }
         }
     }
+
     handleButtonClick = () => {
         this.sendOrderToMonGod();
     }
@@ -70,7 +60,7 @@ render() {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* map over array of pizzas in customer's cart */}
+                    
                     {this.state.order.pizzas.map((item, index) => {
                         return (
                             <CheckoutItem key={index} item={item} />
