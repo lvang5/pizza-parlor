@@ -1,0 +1,19 @@
+html, body{
+    width: 100%;
+}
+table{
+    margin: 0 auto;
+}
+tr:nth-child(even){
+    background: #CCC;
+}
+tr:nth-child(odd){
+    background: #FFF;
+}
+th{
+    background: grey;
+    color:white;
+}
+tr:hover{
+    background-color:orange;
+}
