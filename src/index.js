@@ -7,23 +7,18 @@ import {createStore , combineReducers , applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-// HomeReducer
 
-//CustomerReducer
-
-//CheckoutReducer
-
-//AdminReducer
-
-
-
-
-
+const currentOrder = (state = [], action) => {
+    if (action.type === 'ADD_ITEM') {
+        return [...state, action.payload];
+    }
+    return state;
+}
 
 
 const storeInstance = createStore(
     combineReducers({
-// reducers goes here
+        currentOrder
     }),
     applyMiddleware(logger),
 );
