@@ -7,9 +7,9 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
-    // this.state = {
-
-    // }
+    this.state = {
+      storedPizzas: []
+    }
   }
 
   componentDidMount() {
@@ -23,35 +23,32 @@ class Home extends Component {
       method: 'GET',
       url: '/api/pizza'
     }).then((response) => {
-      const storedPizzas = response.data; // Array of pizza selections
-      const action = { type: 'ADD_ORDER', payload: storedPizzas };
+      this.setState({
+        storedPizzas: response.data
+      }); // Array of pizza selections
+      const action = { type: 'ADD_ORDER', payload: this.state.storedPizzas };
       this.props.dispatch(action);
-      console.log(storedPizzas);
+      console.log(this.state.storedPizzas);
     })
   }
-  
+
 
   render() {
     return (
-      <div>
-        <h3>Step 1: Select Your Pizza</h3>
-
-        <div className = "card">
-        <img src = "images/pizza_photo.png" alt="pizza"/>
-        {this.props.reduxState.pizzas}
-        <br /> <button>Add</button>
-        <button>Remove</button>
+      <div className="card">
+        <div>
+          <h3>Step 1: Select Your Pizza</h3>
+          {this.state.storedPizzas.map((pizza, i) => {
+            return <img src="images/pizza_photo.png" alt="pizza" />
+          })}
+          <br /> <button>Add</button>
+          <button>Remove</button>
         </div>
-
-        <button className = "next">Next</button>
-
-
+        <button className="next">Next</button>
       </div>
+
     )
   }
-
-
-
 } // end Component
 
 const mapReduxStateToProps = (reduxState) => ({

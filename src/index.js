@@ -11,8 +11,8 @@ import logger from 'redux-logger';
 const pizzas = (state = [], action) => {
     if(action.type === 'ADD_ORDER') {
         return [...state, action.payload];
-    } else if (action.type === 'UPDATE_ORDER') {
-        return action.payload;
+    } else if (action.type === 'DELETE_ONE') {
+        return state.filter((pizza, i) => pizza.idNumber !== action.payload);
     } else {
         return state;
     }
@@ -24,9 +24,6 @@ const pizzas = (state = [], action) => {
 //CheckoutReducer
 
 //AdminReducer
-
-
-
 
 
 
