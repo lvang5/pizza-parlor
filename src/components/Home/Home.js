@@ -36,7 +36,7 @@ class Home extends Component {
     console.log('Next button clicked')
     const action = {type: 'ADD_ORDER', payload: this.state.pizzas };
     this.props.dispatch(action);
-    // this.props.history.push('customer');
+    this.props.history.push('customer');
   }
 
   // axios GET all of the pizzas available for selection -- map over pizzas
